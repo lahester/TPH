@@ -16,7 +16,11 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
-        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
-        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        <li class="nav-item active">
+            <a href='@Url.Action("Register", "Account")' class="nav-link">Register</a>
+        </li>
+        <li class="nav-item active">
+            <a href='@Url.Action("Login", "Account")' class="nav-link">Login</a>
+        </li>
     </ul>
 }

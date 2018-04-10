@@ -47,12 +47,12 @@ namespace TPH
 
             // Uncomment the following lines to enable logging in with third party login providers
             //app.UseMicrosoftAccountAuthentication(
-            //    clientId: "",
+            //clientId: "",
             //    clientSecret: "");
 
-            //app.UseTwitterAuthentication(
-            //   consumerKey: "",
-            //   consumerSecret: "");
+            app.UseTwitterAuthentication(
+            consumerKey: "xBzK1Z1bzcB590XfADMIxbD5W",
+            consumerSecret: "MSYmGOdaMqhSReOC4xqzAYupOcJhslz96V8BD4JPp5mzHe2nPp");
 
             //app.UseFacebookAuthentication(
             //   appId: "",
