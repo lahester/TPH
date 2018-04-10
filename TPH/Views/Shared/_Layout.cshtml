@@ -10,7 +10,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
+        <a class="navbar-brand" href="#">TPH</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -18,16 +18,19 @@
         <div class="collapse navbar-collapse" id="navbarColor02">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    @Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link" })
+                    <a href='@Url.Action("Index", "Home")' class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("About", "Index", "About", new { @class = "nav-link" })
+                    <a href='@Url.Action("Index", "About")' class = "nav-link">About Us</a>
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Contact", "Contact", "Home", new { @class="nav-link" })
+                    <a href='@Url.Action("Contact", "Home")' class="nav-link">Contact Us</a>
                 </li>
                 <li class="nav-item">
-                    @Html.ActionLink("Products", "Index", "Product", new { @class = "nav-link" })
+                    <a href='@Url.Action("Index", "Product")' class="nav-link">Our Products</a>
+                </li>
+                <li class="nav-item">
+                    @Html.Partial("_LoginPartial", new { @class="nav-link"})
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
@@ -40,7 +43,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - TPH Technologies</p>
         </footer>
     </div>
 
