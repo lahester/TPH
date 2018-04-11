@@ -15,7 +15,12 @@ namespace TPH.Controllers
         // GET: Product
         public ActionResult Index()
         {
-            return View();
+            var products = _context.Products.ToList();
+            var viewModel = new ProductsViewModel()
+            {
+                Products = products
+            };
+            return View(viewModel);
         }
 
         public ActionResult Form()
