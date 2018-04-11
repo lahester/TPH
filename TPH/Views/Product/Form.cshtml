@@ -3,36 +3,45 @@
     ViewBag.Title = "ProductForm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="container">
+    @using (Html.BeginForm("Save", "Product", new { @class = "form" }))
+    {
+        @Html.ValidationSummary(true, "Please fix the following errors")
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Product.name)
+            @Html.LabelFor(m => m.Product.name) @Html.TextBoxFor(m => m.Product.name)
+        </div>
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Product.quantityInStock)
+            @Html.LabelFor(m => m.Product.quantityInStock) @Html.TextBoxFor(m => m.Product.quantityInStock)
+        </div>
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Product.size)
+            @Html.LabelFor(m => m.Product.size) @Html.TextBoxFor(m => m.Product.size)
+        </div>
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Product.price)
+            @Html.LabelFor(m => m.Product.price) @Html.TextBoxFor(m => m.Product.price)
+        </div>
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Product.weight)
+            @Html.LabelFor(m => m.Product.weight) @Html.TextBoxFor(m => m.Product.weight)
+        </div>
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Product.color)
+            @Html.LabelFor(m => m.Product.color) @Html.TextBoxFor(m => m.Product.color)
+        </div>
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Product.category)
+            @Html.LabelFor(m => m.Product.category) @Html.TextBoxFor(m => m.Product.category)
+        </div>
+        <div class="form-group">
+            @Html.ValidationMessageFor(m => m.Product.image_URL)
+            @Html.LabelFor(m => m.Product.image_URL) @Html.TextBoxFor(m => m.Product.image_URL)
+        </div>
 
-@using (Html.BeginForm("Save", "Product", new { @class = "form" }))
-{
-    <div class="form-group">
-        @Html.LabelFor(m => m.Product.name) @Html.TextBoxFor(m => m.Product.name)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Product.quantityInStock) @Html.TextBoxFor(m => m.Product.quantityInStock)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Product.size) @Html.TextBoxFor(m => m.Product.size)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Product.price) @Html.TextBoxFor(m => m.Product.price)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Product.weight) @Html.TextBoxFor(m => m.Product.weight)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Product.color) @Html.TextBoxFor(m => m.Product.color)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Product.category) @Html.TextBoxFor(m => m.Product.category)
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.Product.image_URL) @Html.TextBoxFor(m => m.Product.image_URL)
-    </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
-}
-
+        <button type="submit" class="btn btn-primary">Submit</button>
+    }
+</div>
 
 
