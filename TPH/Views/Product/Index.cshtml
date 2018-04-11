@@ -1,7 +1,34 @@
-﻿
+﻿@model TPH.ViewModels.ProductsViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h4>Index product page</h4>
-@Html.ActionLink("Add items", "Form", "Product")
+
+@if (!Model.Products.Any())
+{
+    @Html.ActionLink("Add items", "Form", "Product")
+}
+else
+{
+<table>
+    <thead>
+        <tr>
+            <th>
+                Product
+            </th>
+            <th>
+                Details
+            </th>
+        </tr>
+    </thead>
+    @foreach(var product in Model.Products)
+    {
+        <tr>
+            <td>
+                @product.name
+            </td>
+        </tr>
+    }
+</table>
+}
 
