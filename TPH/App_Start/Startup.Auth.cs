@@ -50,19 +50,21 @@ namespace TPH
             //clientId: "",
             //    clientSecret: "");
 
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "724001757332-lfok6coipt3vcf9pa92isefmtirnvb17.apps.googleusercontent.com",
+                ClientSecret = "YDneT44khMrC4f9AFqqMX_5O"
+            });
+
             app.UseTwitterAuthentication(
             consumerKey: "xBzK1Z1bzcB590XfADMIxbD5W",
             consumerSecret: "MSYmGOdaMqhSReOC4xqzAYupOcJhslz96V8BD4JPp5mzHe2nPp");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "748258925561932",
+               appSecret: "ea88fda0839cd3caff875c6674854847");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            
         }
     }
 }
