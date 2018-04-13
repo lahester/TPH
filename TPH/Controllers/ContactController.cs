@@ -9,7 +9,7 @@ namespace TPH.Controllers
     public class ContactController : Controller
     {
         // GET: Contact
-        public ActionResult Index()
+        public ActionResult Index() 
         {
             return View();
         }

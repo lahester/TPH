@@ -10,25 +10,33 @@
 }
 else
 {
-<table>
-    <thead>
-        <tr>
-            <th>
-                Product
-            </th>
-            <th>
-                Details
-            </th>
-        </tr>
-    </thead>
-    @foreach(var product in Model.Products)
-    {
-        <tr>
-            <td>
-                @product.name
-            </td>
-        </tr>
-    }
-</table>
+    @Html.ActionLink("Add items", "Form", "Product")
+
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Product
+                </th>
+                <th>
+                    Details
+                </th>
+            </tr>
+        </thead>
+        @foreach (var product in Model.Products)
+        {
+            <tr>
+                <td>
+                    @product.name
+                </td>
+                <td>
+                    $@product.price
+                </td>
+                <td>
+                    <img src="@product.image_URL" style="width:125px; height:125px"/>
+                </td>
+            </tr>
+        }
+    </table>
 }
 
