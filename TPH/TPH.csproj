@@ -192,6 +192,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -208,13 +209,19 @@
     <Compile Include="Migrations\201804042152470_AddedProducts.Designer.cs">
       <DependentUpon>201804042152470_AddedProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804142305410_addedCartMemes.cs" />
+    <Compile Include="Migrations\201804142305410_addedCartMemes.Designer.cs">
+      <DependentUpon>201804142305410_addedCartMemes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\CartViewModel.cs" />
     <Compile Include="ViewModels\ProductFormViewModel.cs" />
     <Compile Include="ViewModels\ProductsViewModel.cs" />
   </ItemGroup>
@@ -285,6 +292,7 @@
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Shared\_NavbarPartial.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -306,6 +314,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804042152470_AddedProducts.resx">
       <DependentUpon>201804042152470_AddedProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804142305410_addedCartMemes.resx">
+      <DependentUpon>201804142305410_addedCartMemes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

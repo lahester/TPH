@@ -16,11 +16,8 @@ namespace TPH.Controllers
         public ActionResult Index()
         {
             var products = _context.Products.ToList();
-            var viewModel = new ProductsViewModel()
-            {
-                Products = products
-            };
-            return View(viewModel);
+            ViewBag.Products = products;
+            return View(new CartViewModel());
         }
 
         public ActionResult Form()
@@ -33,8 +30,6 @@ namespace TPH.Controllers
         {
             _context = new ApplicationDbContext();
         }
-
-
 
         public ActionResult New()
         {
@@ -63,5 +58,6 @@ namespace TPH.Controllers
             _context.SaveChanges();
             return RedirectToAction("Index", "Product");
         }
+
     }
 }

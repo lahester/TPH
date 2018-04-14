@@ -1,42 +1,37 @@
-﻿@model TPH.ViewModels.ProductsViewModel
+﻿@model TPH.ViewModels.CartViewModel
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h4>Index product page</h4>
 
-@if (!Model.Products.Any())
-{
-    @Html.ActionLink("Add items", "Form", "Product")
-}
-else
-{
+<div class="container">
     @Html.ActionLink("Add items", "Form", "Product")
 
-    <table>
-        <thead>
-            <tr>
-                <th>
-                    Product
-                </th>
-                <th>
-                    Details
-                </th>
-            </tr>
-        </thead>
-        @foreach (var product in Model.Products)
-        {
-            <tr>
-                <td>
-                    @product.name
-                </td>
-                <td>
-                    $@product.price
-                </td>
-                <td>
-                    <img src="@product.image_URL" style="width:125px; height:125px"/>
-                </td>
-            </tr>
-        }
-    </table>
-}
+    @if (ViewBag.Products.Count == 0)
+    {
+        <br />
+        <div class="alert">
+            Our shop is currently empty.
+        </div>
+    }
+    else
+    {
+        <div class="list-view">
+            @foreach (var product in ViewBag.Products)
+            {
+            <div class="list-item">
+                <span class="p-name">@product.name</span>
+                <span class="p-color">@product.color</span>
+                <span class="p-quantityinstock">@product.quantityInStock</span>
+                <span class="p-price">$@product.price</span>
+                <span class="p-category">@product.category</span>
+                <span class="p-size">@product.size</span>
+                <span class="p-weight">@product.weight</span>
+                <span class="p-image_url"><img src="@product.image_URL" style="width: 50px; height: 50px;" /></span>
+                <span class="p-add-to-cart"><button onclick="@Model.cart.Add(product); @Url.Action("Cart","Product", product)"></button></span> @*think about moving this btn || add pop on cart nav bar to display it was put there*@
+            </div>
+            }
+        </div>
+    }
+</div>
 
