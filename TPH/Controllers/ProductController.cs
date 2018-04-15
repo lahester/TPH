@@ -17,7 +17,7 @@ namespace TPH.Controllers
         {
             var products = _context.Products.ToList();
             ViewBag.Products = products;
-            return View(new CartViewModel());
+            return View();
         }
 
         public ActionResult Form()

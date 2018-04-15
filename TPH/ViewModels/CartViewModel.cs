@@ -8,6 +8,6 @@ namespace TPH.ViewModels
 {
     public class CartViewModel
     {
-        public List<Product> cart { get; set; }
+        public List<CartItem> Cart { get; set; }
     }
 }
