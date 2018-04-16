@@ -158,6 +158,8 @@ namespace TPH.Controllers
                 {
                     //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
                     //var roleManage = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManage.CreateAsync(new IdentityRole("CanManageProducts"));
+                    //await UserManager.AddToRoleAsync(user.Id, "CanManageProducts");
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
