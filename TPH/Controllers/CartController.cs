@@ -27,35 +27,36 @@ namespace TPH.Controllers
             if(HttpContext.Session["cart"] == null)
             {
                 List<CartItem> cart = new List<CartItem>();
-                cart.Add(new CartItem(pv.Products.Find(x => x.id == id), 1));
-                //ViewBag.CartItem = cart;
+                cart.Add(new CartItem(pv.Products.Find(x => x.id == id), 1));  //ViewBag.CartItem = cart;
                 Session["cart"] = cart;
 
             }
             else
             {
-
+                List<CartItem> cart = (List<CartItem>)Session["cart"];
+                cart.Add(new CartItem(pv.Products.Find(x => x.id == id), 1));
+                Session["cart"] = cart;
             }
             return View("Cart");
         }
 
-        //private ApplicationDbContext _context;
+        private ApplicationDbContext _context;
 
-        public ActionResult Add()
-        {
-            //var CartItem = new CartItem
-            //{
-            //    name = product.name,
-            //    price = product.price,
-            //    Product = product,
-            //    quantityInStock = product.quantityInStock
-            //};
-            var viewModel = new CartItemViewModel
-            {
-                CartItem = new CartItem()
-            };
+        //public ActionResult Add()
+        //{
+        //    var CartItem = new CartItem
+        //    {
+        //        name = product.name,
+        //        price = product.price,
+        //        Product = product,
+        //        quantityInStock = product.quantityInStock
+        //    };
+        //    var viewModel = new CartItemViewModel
+        //    {
+        //        CartItem = new CartItem()
+        //    };
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
     }
 }
