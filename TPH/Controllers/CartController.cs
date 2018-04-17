@@ -37,7 +37,7 @@ namespace TPH.Controllers
                 cart.Add(new CartItem(pv.Products.Find(x => x.id == id), 1));
                 Session["cart"] = cart;
             }
-            return View("Cart");
+            return View("ShoppingCart");
         }
 
         private ApplicationDbContext _context;

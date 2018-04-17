@@ -367,7 +367,7 @@
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Shared\_NavbarPartial.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
-    <Content Include="Views\Cart\Cart.cshtml" />
+    <Content Include="Views\Cart\ShoppingCart.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
