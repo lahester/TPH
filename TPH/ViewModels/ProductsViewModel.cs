@@ -8,6 +8,8 @@ namespace TPH.ViewModels
 {
     public class ProductsViewModel
     {
+        public int id { get; set; }
+
         public List<Product> Products { get; set; }
     }
 }

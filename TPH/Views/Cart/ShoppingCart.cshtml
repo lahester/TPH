@@ -1,0 +1,31 @@
+﻿@using TPH.Controllers
+@using TPH.Models
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2>Cart</h2>
+
+<div class="container">
+    <table cellpadding="2" cellspacing="2" border="1">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Subtotal</th>
+        </tr>
+        @foreach (CartItem item in (List<CartItem>)Session["cart"])
+        {
+            <tr>
+                <td>@item.Pr.id</td>
+                <td>@item.Pr.name</td>
+                <td>@item.Pr.price</td>
+                <td>@item.quantityOrdered</td>
+                <td>@item.Pr.price * item.quantityOrdered</td>
+            </tr>
+        }
+    </table>
+    @Html.ActionLink("Continue Shopping", "Index", "Product")
+</div>
+
+
