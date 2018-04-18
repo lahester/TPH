@@ -27,6 +27,11 @@
             <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
         </form>
         @Html.Partial("_LoginPartial", new { @class = "nav-link" })
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item active">
+                <a href='@Url.Action("OrderNow", "Cart")' class="nav-link">Bag</a>
+            </li>
+        </ul>
         <button type="button" class="btn btn-default btn-sm">
             <span class="glyphicon">&#xe116;</span>
         </button>
