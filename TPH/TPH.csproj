@@ -283,6 +283,10 @@
     <Compile Include="Migrations\201804160013365_SeedUsers.Designer.cs">
       <DependentUpon>201804160013365_SeedUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804182025524_Cleanup.cs" />
+    <Compile Include="Migrations\201804182025524_Cleanup.Designer.cs">
+      <DependentUpon>201804182025524_Cleanup.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -395,6 +399,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804160013365_SeedUsers.resx">
       <DependentUpon>201804160013365_SeedUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804182025524_Cleanup.resx">
+      <DependentUpon>201804182025524_Cleanup.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

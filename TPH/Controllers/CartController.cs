@@ -40,7 +40,7 @@ namespace TPH.Controllers
             return View("ShoppingCart");
         }
 
-        private ApplicationDbContext _context;
+        private ApplicationDbContext _context2;
 
         //public ActionResult Add()
         //{
