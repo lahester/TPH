@@ -1,11 +1,12 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    int number;
 }
-<h4>Index product page</h4>
+<h4 style="text-align: center">Index product page</h4>
 
 <div class="container">
     @Html.ActionLink("Add items", "Form", "Product")
-
+    <hr />
     @if (ViewBag.Products.Count == 0)
     {
         <br />
@@ -15,22 +16,33 @@
     }
     else
     {
-        <div class="list-view">
-            @foreach (var product in ViewBag.Products)
-            {
-            <div class="list-item">
-                <span class="p-name">@product.name</span>
-                <span class="p-color">@product.color</span>
-                <span class="p-quantityinstock">@product.quantityInStock</span>
-                <span class="p-price">$@product.price</span>
-                <span class="p-category">@product.category</span>
-                <span class="p-size">@product.size</span>
-                <span class="p-weight">@product.weight</span>
-                <span class="p-image_url"><img src="@product.image_URL" style="width: 50px; height: 50px;" /></span>
-                <span class="p-add-to-cart"><button onclick="location.href='@Url.Action("OrderNow", "Cart", new { id = product.id })'">+</button></span> @*think about moving this btn || add pop on cart nav bar to display it was put there*@
+        for (var i = 0; i < 5; i++)
+        {
+            <div class="row">
+                @for (var x = 0; x < 4; x++)
+                {
+                <div class="col-lg-3">
+                    <div class="card mb-3">
+                        <h4 class="card-header">@ViewBag.Products[i * 4 + x].name</h4>
+                        <img style="height: 200px; width: 100%; display: block;" src="@ViewBag.Products[i * 4 + x].image_URL" alt="Card image">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">@ViewBag.Products[i * 4 + x].size</li>
+                            <li class="list-group-item">@ViewBag.Products[i * 4 + x].weight</li>
+                            <li class="list-group-item">@ViewBag.Products[i * 4 + x].color</li>
+                        </ul>
+                        <div class="card-body">
+                            <span><a href="@Url.Action("OrderNow", "Cart", new { id = @ViewBag.Products[i * 4 + x].id })" class="card-link">Order now</a></span>
+                            <span><a href="@Url.Action("AddToCart", "Cart", new { id = @ViewBag.Products[i * 4 + x].id })" class="card-link">Add to cart</a><input type="number" style="width: 50px; height: 20px;"/></span> @*Need to add quantityordered*@ 
+                        </div>
+                        <div class="card-footer text-muted">
+                            memes
+                        </div>
+                    </div>
+                </div>
+                }
             </div>
-            }
-        </div>
+        }
     }
 </div>
 
+@* @ViewBag.Products[i * 4 + x].price *@
