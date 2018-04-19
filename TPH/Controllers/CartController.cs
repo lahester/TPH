@@ -22,25 +22,42 @@ namespace TPH.Controllers
             return View();
         }
 
+        List<CartItem> cart;
+
         public ActionResult OrderNow(int id)
         {
-            if(HttpContext.Session["cart"] == null)
+            if(cart == null)
             {
-                List<CartItem> cart = new List<CartItem>();
-                cart.Add(new CartItem(pv.Products.Find(x => x.id == id), 1));  //ViewBag.CartItem = cart;
-                Session["cart"] = cart;
+                cart = new List<CartItem>();
+                cart.Add(new CartItem(_context.Products.Find(id), 1));
+                ViewBag.Cart = cart;
 
             }
             else
             {
-                List<CartItem> cart = (List<CartItem>)Session["cart"];
-                cart.Add(new CartItem(pv.Products.Find(x => x.id == id), 1));
-                Session["cart"] = cart;
+                cart.Add(new CartItem(_context.Products.Find(id), 1));
+                ViewBag.Cart = cart;
             }
-            return View("ShoppingCart");
+            return View("Index");
         }
 
-        private ApplicationDbContext _context2;
+        public ActionResult AddToCart(int id, int quantityOrdered)
+        {
+            if(cart == null)
+            {
+                cart = new List<CartItem>();
+                cart.Add(new CartItem(_context.Products.Find(id), quantityOrdered));
+                ViewBag.Cart = cart;
+            }
+            return View();
+        }
+
+        public CartController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
+        private ApplicationDbContext _context;
 
         //public ActionResult Add()
         //{
