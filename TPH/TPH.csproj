@@ -19,7 +19,8 @@
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>44381</IISExpressSSLPort>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -262,7 +263,6 @@
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\PortfolioController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -287,9 +287,14 @@
     <Compile Include="Migrations\201804182025524_Cleanup.Designer.cs">
       <DependentUpon>201804182025524_Cleanup.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804221518356_NewCustomerModel.cs" />
+    <Compile Include="Migrations\201804221518356_NewCustomerModel.Designer.cs">
+      <DependentUpon>201804221518356_NewCustomerModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Product.cs" />
@@ -297,6 +302,7 @@
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\CartItemViewModel.cs" />
     <Compile Include="ViewModels\CartViewModel.cs" />
+    <Compile Include="ViewModels\CustomerViewModel.cs" />
     <Compile Include="ViewModels\ProductFormViewModel.cs" />
     <Compile Include="ViewModels\ProductsViewModel.cs" />
   </ItemGroup>
@@ -366,12 +372,13 @@
     <Content Include="Views\Product\Form.cshtml" />
     <Content Include="Views\About\Index.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
-    <Content Include="Views\Portfolio\FourColumn.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Shared\_FooterPartial.cshtml" />
     <Content Include="Views\Shared\_NavbarPartial.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
     <Content Include="Views\Cart\ShoppingCart.cshtml" />
+    <Content Include="Views\Cart\CheckOut.cshtml" />
+    <Content Include="Views\Product\Admin.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -402,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804182025524_Cleanup.resx">
       <DependentUpon>201804182025524_Cleanup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804221518356_NewCustomerModel.resx">
+      <DependentUpon>201804221518356_NewCustomerModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

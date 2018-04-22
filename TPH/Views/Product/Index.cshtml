@@ -1,11 +1,9 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
-    int number;
+    ViewBag.Title = "Products";
 }
-<h4 style="text-align: center">Index product page</h4>
-
 <div class="container">
-    @Html.ActionLink("Add items", "Form", "Product")
+    @Html.ActionLink("+", "Form", "Product")
     <hr />
     @if (ViewBag.Products.Count == 0)
     {
@@ -26,16 +24,13 @@
                         <h4 class="card-header">@ViewBag.Products[i * 4 + x].name</h4>
                         <img style="height: 200px; width: 100%; display: block;" src="@ViewBag.Products[i * 4 + x].image_URL" alt="Card image">
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">@ViewBag.Products[i * 4 + x].size</li>
-                            <li class="list-group-item">@ViewBag.Products[i * 4 + x].weight</li>
+                            <li class="list-group-item">@ViewBag.Products[i * 4 + x].size / @ViewBag.Products[i * 4 + x].weight </li>
+                            <li class="list-group-item">$@ViewBag.Products[i * 4 + x].price</li>
                             <li class="list-group-item">@ViewBag.Products[i * 4 + x].color</li>
                         </ul>
                         <div class="card-body">
                             <span><a href="@Url.Action("OrderNow", "Cart", new { id = @ViewBag.Products[i * 4 + x].id })" class="card-link">Order now</a></span>
-                            <span><a href="@Url.Action("AddToCart", "Cart", new { id = @ViewBag.Products[i * 4 + x].id })" class="card-link">Add to cart</a><input type="number" style="width: 50px; height: 20px;"/></span> @*Need to add quantityordered*@ 
-                        </div>
-                        <div class="card-footer text-muted">
-                            memes
+                            @*<span><a href="@Url.Action("AddToCart", "Cart", new { id = @ViewBag.Products[i * 4 + x].id })" class="card-link">Add to cart</a></span>*@ 
                         </div>
                     </div>
                 </div>
@@ -45,4 +40,3 @@
     }
 </div>
 
-@* @ViewBag.Products[i * 4 + x].price *@

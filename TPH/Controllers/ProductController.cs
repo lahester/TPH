@@ -13,13 +13,14 @@ namespace TPH.Controllers
     public class ProductController : Controller
     {
         // GET: Product
+        [AllowAnonymous]
         public ActionResult Index()
         {
             var products = _context.Products.ToList();
             ViewBag.Products = products;
             return View();
         }
-
+        [Authorize]
         public ActionResult Form()
         {
             return View();
@@ -30,7 +31,7 @@ namespace TPH.Controllers
         {
             _context = new ApplicationDbContext();
         }
-
+        [Authorize]
         public ActionResult New()
         {
             var viewModel = new ProductFormViewModel
@@ -39,8 +40,7 @@ namespace TPH.Controllers
             };
             return View("Form", viewModel);
         }
-
-        [HttpPost]
+        [Authorize]
         public ActionResult Save(Product product)
         {
             if(!ModelState.IsValid)
@@ -57,6 +57,13 @@ namespace TPH.Controllers
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Product");
+        }
+
+        [Authorize]
+        public ActionResult Remove(Product product)
+        {
+            _context.Products.Remove(product);
+            return RedirectToAction("Index",  "Product");
         }
 
     }

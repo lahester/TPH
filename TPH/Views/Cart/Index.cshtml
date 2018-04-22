@@ -7,34 +7,43 @@
 <h2>Cart</h2>
 
 <div class="container">
+
     @if (ViewBag.Cart == null)
     {
-        @Html.ActionLink("Your cart is empty", "Index", "Product")
+        <div class="row">
+            @Html.ActionLink("Your cart is empty", "Index", "Product")
+        </div>
     }
     else
     {
-
-        <table cellpadding="2" cellspacing="2" border="1">
-            <tr>
-                <th>Id</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Quantity</th>
-                <th>Subtotal</th>
-            </tr>
-
-            @foreach (CartItem item in ViewBag.Cart)
-            {
+        <div class="row">
+            <table cellpadding="2" cellspacing="2" border="1">
                 <tr>
-                    <td>@item.Pr.id</td>
-                    <td>@item.Pr.name</td>
-                    <td>@item.Pr.price</td>
-                    <td>@item.quantityOrdered</td>
-                    <td>@item.Pr.price * item.quantityOrdered</td>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                </tr>
+
+                @foreach (CartItem item in ViewBag.Cart)
+                {
+                    <tr>
+                        <td>@item.Pr.name</td>
+                        <td>@item.Pr.price</td>
+                        <td>@item.quantityOrdered</td>
+                        <td>$@(item.Pr.price * item.quantityOrdered)</td>
+                        <td>
+                            @using (Html.BeginForm("RemoveFromCart", "Cart", new { c = item }))
+                            {<button type="submit">Remove</button>}
+                    </td>
                 </tr>
             }
-        </table>
-        @Html.ActionLink("Continue Shopping", "Index", "Product")
+            </table>
+        </div>
+        <div class="row">
+            @Html.ActionLink("Continue Shopping", "Index", "Product") &nbsp; / &nbsp;
+            @Html.ActionLink("Check Out", "CheckOut", "Cart")
+        </div>
     }
 </div>
 

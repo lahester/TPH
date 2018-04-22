@@ -10,11 +10,13 @@ using TPH.ViewModels;
 
 namespace TPH.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
-        private ProductsViewModel pv = new ProductsViewModel();
+        
 
         // GET: Cart
+        
         public ActionResult Index()
         {
             //var Cart = _context.Cart.ToList();
@@ -22,34 +24,27 @@ namespace TPH.Controllers
             return View();
         }
 
-        List<CartItem> cart;
-
+        List<CartItem> cart = new List<CartItem>();
+        
         public ActionResult OrderNow(int id)
         {
-            if(cart == null)
-            {
-                cart = new List<CartItem>();
-                cart.Add(new CartItem(_context.Products.Find(id), 1));
-                ViewBag.Cart = cart;
-
-            }
-            else
-            {
-                cart.Add(new CartItem(_context.Products.Find(id), 1));
-                ViewBag.Cart = cart;
-            }
+            cart.Add(new CartItem(_context.Products.Find(id), 1));
+            ViewBag.Cart = cart;
+            return View("Index");
+        }
+        
+        public ActionResult AddToCart(int id, int quantityOrdered)
+        {
+            cart = new List<CartItem>();
+            cart.Add(new CartItem(_context.Products.Find(id), quantityOrdered));
+            ViewBag.Cart = cart;
             return View("Index");
         }
 
-        public ActionResult AddToCart(int id, int quantityOrdered)
+        public ActionResult RemoveFromCart(CartItem c, int? quanity)
         {
-            if(cart == null)
-            {
-                cart = new List<CartItem>();
-                cart.Add(new CartItem(_context.Products.Find(id), quantityOrdered));
-                ViewBag.Cart = cart;
-            }
-            return View();
+            cart.Remove(c);
+            return View("Index");
         }
 
         public CartController()
@@ -59,21 +54,13 @@ namespace TPH.Controllers
 
         private ApplicationDbContext _context;
 
-        //public ActionResult Add()
-        //{
-        //    var CartItem = new CartItem
-        //    {
-        //        name = product.name,
-        //        price = product.price,
-        //        Product = product,
-        //        quantityInStock = product.quantityInStock
-        //    };
-        //    var viewModel = new CartItemViewModel
-        //    {
-        //        CartItem = new CartItem()
-        //    };
-
-        //    return RedirectToAction("Index");
-        //}
+        public ActionResult CheckOut()
+        {
+            var viewModel = new CustomerViewModel
+            {
+                C = new Customer()
+            };
+            return View("CheckOut", viewModel);
+        }
     }
 }
